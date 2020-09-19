@@ -34,7 +34,7 @@ mean(p1_df$vec_character)
 mean(p1_df$vec_factor)
 ```
 
-_It is possible to take the mean of the numeric and logical variables (since the logical values are represented as 0 and 1), but not of the character or factor variables. Taking the mean of character or factor variables produces a warning and an output of "NA"._
+**It is possible to take the mean of the numeric and logical variables (since the logical values are represented as 0 and 1), but not of the character or factor variables. Taking the mean of character or factor variables produces a warning and an output of "NA".**
 
 In some cases, you can explicitly convert variables from one type to another. Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens, and why? Does this help explain what happens when you try to take the mean?
 
@@ -44,7 +44,7 @@ as.numeric(p1_df$vec_character)
 as.numeric(p1_df$vec_factor)
 ```
 
-_When the logical vector is converted to numeric, FALSE is converted to 0 while TRUE is converted to 1. Similarly, when the factor vector is converted to numeric, numbers (1, 2 or 3) are assigned to each category of the variable. However, when the character vector is converted to numeric, each character is listed as NA and a warning explains that NAs are introduced by coercion. This partially explains what happens when you try to take the mean, since intuitively it makes sense that R doesn't have a way to assign numeric values to the character vector. However, it's interesting that numeric values are automatically assigned to each category of the factor vector when converting to numeric, but that this doesn't happen automatically when a mean is taken._
+**When the logical vector is converted to numeric, FALSE is converted to 0 while TRUE is converted to 1. Similarly, when the factor vector is converted to numeric, numbers (1, 2 or 3) are assigned to each category of the variable. However, when the character vector is converted to numeric, each character is listed as NA and a warning explains that NAs are introduced by coercion. This partially explains what happens when you try to take the mean, since intuitively it makes sense that R doesn't have a way to assign numeric values to the character vector. However, it's interesting that numeric values are automatically assigned to each category of the factor vector when converting to numeric, but that this doesn't happen automatically when a mean is taken.**
 
 In a second code chunk:
 
@@ -78,14 +78,17 @@ Write a short description of the penguins dataset (not the penguins_raw dataset)
 * the size of the dataset (using nrow and ncol)
 * the mean flipper length
 
-_The "penguins" dataset includes information on `r ncol(palmerpenguins::penguins)` variables (ie, it has `r ncol(palmerpenguins::penguins)` columns) for `r nrow(palmerpenguins::penguins)` penguins (ie, it has `r nrow(palmerpenguins::penguins)` rows). Some key variables include species, which includes `r levels(palmerpenguins::penguins$species)`, island, which includes `r levels(palmerpenguins::penguins$island)`, and basic measurements of the penguins such as flipper length, which uses the variable name flipper_length_mm and ranges from `r min(palmerpenguins::penguins$flipper_length_mm, na.rm = TRUE)`mm to `r max(palmerpenguins::penguins$flipper_length_mm, na.rm = TRUE)`mm. The mean flipper length for penguins for whom flipper length is available in this dataset is `r mean(palmerpenguins::penguins$flipper_length_mm, na.rm = TRUE)`mm._
+**The "penguins" dataset includes information on `r ncol(palmerpenguins::penguins)` variables (ie, it has `r ncol(palmerpenguins::penguins)` columns) for `r nrow(palmerpenguins::penguins)` penguins (ie, it has `r nrow(palmerpenguins::penguins)` rows). Some key variables include species, which includes `r levels(palmerpenguins::penguins$species)`, island, which includes `r levels(palmerpenguins::penguins$island)`, and basic measurements of the penguins such as flipper length, which uses the variable name flipper_length_mm and ranges from `r min(palmerpenguins::penguins$flipper_length_mm, na.rm = TRUE)`mm to `r max(palmerpenguins::penguins$flipper_length_mm, na.rm = TRUE)`mm. The mean flipper length for penguins for whom flipper length is available in this dataset is `r mean(palmerpenguins::penguins$flipper_length_mm, na.rm = TRUE)`mm.**
 
 Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable (adding color = ... inside of aes in your ggplot code should help).
 
 Export your first scatterplot to your project directory using ggsave.
 
-``` {r problem 2_b}
+``` {r problem 2_b, message = FALSE}
+library(tidyverse)
+ggplot(palmerpenguins::penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 
+ggsave("p8105_hw1_emg2237_penguin_plot.pdf", height = 4, width = 4)
 ```
 
 
