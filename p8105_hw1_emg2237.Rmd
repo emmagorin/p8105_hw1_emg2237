@@ -38,13 +38,13 @@ _It is possible to take the mean of the numeric and logical variables (since the
 
 In some cases, you can explicitly convert variables from one type to another. Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens, and why? Does this help explain what happens when you try to take the mean?
 
-``` {r problem_1_c, echo = FALSE, message = FALSE}
+``` {r problem_1_c, eval = FALSE}
 as.numeric(p1_df$vec_logical)
 as.numeric(p1_df$vec_character)
 as.numeric(p1_df$vec_factor)
 ```
 
-_When the logical vector is converted to numeric, FALSE is converted to 0 while TRUE is converted to 1. Similarly, when the factor vector is converted to numeric, numbers (1, 2 or 3) are assigned to each category of the variable. However, when the character vector is converted to numeric, each character is listed as NA and a warning explains that NAs are introduced by coercion. This partially explains what happens when you try to take the mean, since intuitively it makes sense that R doesn't have a way to assign numeric values to the character vectors. However, it's interesting that numeric values are automatically assigned to each category of the factor vector when converting to numeric, but that this doesn't happen automatically when a mean is taken._
+_When the logical vector is converted to numeric, FALSE is converted to 0 while TRUE is converted to 1. Similarly, when the factor vector is converted to numeric, numbers (1, 2 or 3) are assigned to each category of the variable. However, when the character vector is converted to numeric, each character is listed as NA and a warning explains that NAs are introduced by coercion. This partially explains what happens when you try to take the mean, since intuitively it makes sense that R doesn't have a way to assign numeric values to the character vector. However, it's interesting that numeric values are automatically assigned to each category of the factor vector when converting to numeric, but that this doesn't happen automatically when a mean is taken._
 
 In a second code chunk:
 
@@ -54,7 +54,9 @@ In a second code chunk:
 
 
 ``` {r problem_1_d}
-
+as.numeric(p1_df$vec_logical)*p1_df$vec_numeric
+as.factor(p1_df$vec_logical)*p1_df$vec_numeric
+as.numeric(as.factor(p1_df$vec_logical))*p1_df$vec_numeric
 ```
 
 
