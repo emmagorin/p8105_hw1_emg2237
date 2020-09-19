@@ -1,0 +1,74 @@
+---
+title: "P8105 HW1 - Emma Gorin (emg2237)"
+output: github_document
+---
+
+# Problem 1
+
+This problem is intended to emphasize variable types and introduce coercion; some awareness of how R treats numeric, character, and factor variables is necessary for working with these data types in practice.
+
+Create a data frame comprised of:
+* a random sample of size 10 from a standard Normal distribution
+* a logical vector indicating whether elements of the sample are greater than 0
+* a character vector of length 10
+* a factor vector of length 10, with 3 different factor “levels”
+
+```{r problem_1_a}
+
+```
+
+Try to take the mean of each variable in your dataframe. What works and what doesn’t?
+
+``` {r problem_1_b}
+
+```
+
+In some cases, you can explicitly convert variables from one type to another. Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens, and why? Does this help explain what happens when you try to take the mean?
+
+``` {r problem_1_c, echo = FALSE, message = FALSE}
+
+```
+
+In a second code chunk:
+* convert the logical vector to numeric, and multiply the random sample by the result
+* convert the logical vector to a factor, and multiply the random sample by the result
+* convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
+
+
+``` {r problem_1_d}
+
+```
+
+
+# Problem 2
+
+This problem focuses the use of inline R code, plotting, and the behavior of ggplot for variables of different types.
+
+Use the code below to download the a package containing the penguins dataset:
+install.packages("palmerpenguins")
+(Note – you only need to run this command once to install the package, and you can do so directly in the console. This code shouldn’t be executed by your RMarkdown file.)
+
+Next, use the following code (in your RMarkdown file) to load the penguins dataset:
+
+```{r problem_2_a}
+data("penguins", package = "palmerpenguins")
+```
+
+Write a short description of the penguins dataset (not the penguins_raw dataset) using inline R code, including:
+* the data in this dataset, including names / values of important variables
+* (the size of the dataset (using nrow and ncol)
+* the mean flipper length
+
+
+Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable (adding color = ... inside of aes in your ggplot code should help).
+
+Export your first scatterplot to your project directory using ggsave.
+
+``` {r problem 2_b}
+
+```
+
+
+
+
+
