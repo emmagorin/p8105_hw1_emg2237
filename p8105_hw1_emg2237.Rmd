@@ -3,24 +3,35 @@ title: "P8105 HW1 - Emma Gorin (emg2237)"
 output: github_document
 ---
 
-# Problem 1
+## Problem 1
 
 This problem is intended to emphasize variable types and introduce coercion; some awareness of how R treats numeric, character, and factor variables is necessary for working with these data types in practice.
 
 Create a data frame comprised of:
+
 * a random sample of size 10 from a standard Normal distribution
 * a logical vector indicating whether elements of the sample are greater than 0
 * a character vector of length 10
 * a factor vector of length 10, with 3 different factor “levels”
 
-```{r problem_1_a}
+```{r problem_1_a, message = FALSE}
+library(tidyverse)
 
+problem_1_df = tibble(
+  vec_numeric = rnorm(10),
+  vec_logical = (vec_numeric > 0),
+  vec_character = c("does", "it", "matter", "what", "words", "are", "in", "this", "vector", "?"),
+  vec_factor = factor(c("ok", "better", "best", "best", "ok", "better", "ok", "best", "better", "better"))
+)
 ```
 
 Try to take the mean of each variable in your dataframe. What works and what doesn’t?
 
 ``` {r problem_1_b}
-
+mean(problem_1_df$vec_numeric)
+mean(problem_1_df$vec_logical)
+mean(problem_1_df$vec_character)
+mean(problem_1_df$vec_factor)
 ```
 
 In some cases, you can explicitly convert variables from one type to another. Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens, and why? Does this help explain what happens when you try to take the mean?
@@ -30,6 +41,7 @@ In some cases, you can explicitly convert variables from one type to another. Wr
 ```
 
 In a second code chunk:
+
 * convert the logical vector to numeric, and multiply the random sample by the result
 * convert the logical vector to a factor, and multiply the random sample by the result
 * convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
@@ -40,7 +52,7 @@ In a second code chunk:
 ```
 
 
-# Problem 2
+## Problem 2
 
 This problem focuses the use of inline R code, plotting, and the behavior of ggplot for variables of different types.
 
@@ -51,10 +63,11 @@ install.packages("palmerpenguins")
 Next, use the following code (in your RMarkdown file) to load the penguins dataset:
 
 ```{r problem_2_a}
-data("penguins", package = "palmerpenguins")
+# data("penguins", package = "palmerpenguins")
 ```
 
 Write a short description of the penguins dataset (not the penguins_raw dataset) using inline R code, including:
+
 * the data in this dataset, including names / values of important variables
 * (the size of the dataset (using nrow and ncol)
 * the mean flipper length
