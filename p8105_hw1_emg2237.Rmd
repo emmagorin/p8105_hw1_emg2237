@@ -1,5 +1,7 @@
 ---
-title: "P8105 HW1 - Emma Gorin (emg2237)"
+title: "P8105 HW1"
+author: "Emma Gorin (emg2237)"
+date: "Sept 2020"
 output: github_document
 ---
 
@@ -64,7 +66,7 @@ as.numeric(as.factor(p1_df$vec_logical))*p1_df$vec_numeric
 
 This problem focuses the use of inline R code, plotting, and the behavior of ggplot for variables of different types.
 
-Use the code below to download the a package containing the penguins dataset _(done)_
+Use the code below to download a package containing the penguins dataset  **(done)** 
 
 Next, use the following code (in your RMarkdown file) to load the penguins dataset:
 
@@ -85,7 +87,6 @@ Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points 
 Export your first scatterplot to your project directory using ggsave.
 
 ``` {r problem 2_b, message = FALSE}
-library(tidyverse)
 ggplot(palmerpenguins::penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 
 ggsave("p8105_hw1_emg2237_penguin_plot.pdf", height = 4, width = 4)
